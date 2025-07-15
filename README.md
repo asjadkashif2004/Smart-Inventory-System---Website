@@ -1,65 +1,88 @@
-### **📌 Overview of the E-Commerce Product Inventory System**  
 
-This project is a **full-stack E-Commerce Product Inventory System** with **user authentication, product management, and an admin panel**. It enables users to manage products, track inventory, and perform CRUD (Create, Read, Update, Delete) operations while ensuring secure authentication and user roles.  
+### 📦 Smart Inventory System – Complete Web App for Small Business Management
 
----
+**Smart Inventory System** is a full-featured inventory and account management platform built using **Python (Flask)** and **MySQL**, with a responsive, modern UI powered by **HTML, CSS, and Jinja2**.
 
-## **🌟 Key Aspects of the Project**  
+It is designed specifically for **individual sellers**, **small businesses**, and **freelancers** who want to maintain a digital inventory system **without paying for hosting or expensive ERP solutions**.
 
-### **1️⃣ Features & Functionality**
-✅ **User Authentication** – Secure login and registration system.  
-✅ **Admin Panel** – Admins can add, edit, and delete products.  
-✅ **Product Management** – CRUD operations for managing inventory.  
-✅ **Flash Messages** – Inform users about successful or failed actions.  
-✅ **Modern UI** – Clean, responsive design with Bootstrap styling.  
+This system offers:
 
 ---
 
-### **2️⃣ Tech Stack Used**
-🔹 **Frontend:**  
-- HTML, CSS, Bootstrap for UI & styling  
-- Jinja2 Templating for dynamic content  
+### ✅ Key Features:
 
-🔹 **Backend:**  
-- **Flask** (Lightweight Python framework)  
-- **Flask-WTF** (Form handling & validation)  
-- **Flask-Login** (User authentication)  
-- **SQLite/MySQL** (Database for storing users & products)  
+* 🔐 **User Authentication System**
 
-🔹 **Other Integrations:**  
-- Flask Flash Messages for user feedback  
-- SQLAlchemy ORM for database operations  
+  * Register and login securely with **Flask-WTF**
+  * Passwords are hashed using **bcrypt**
+  * **Google OAuth Login** via **Flask-Dance** (Facebook login is marked as *coming soon*)
 
----
+* 🧾 **User Dashboard**
 
-## **🛠️ Backend Working (Step by Step)**  
+  * Personalized dashboard with **user information**, **profile editing**, and **logout**
+  * Upload and display **profile pictures**
+  * Change password securely (except for Google login users)
 
-### **1️⃣ User Authentication**  
-- Users register through the `/register` route, and data (name, email, hashed password) is stored in the database.  
-- Users log in via `/login`, where the email and password are verified.  
-- If successful, Flask-Login creates a session for the user.  
-- Admins can log in with special credentials for extra privileges.  
+* 📊 **Inventory/Product Management**
 
-### **2️⃣ Product Management (CRUD Operations)**
-- **View Products:**  
-  - The `/dashboard` route fetches all products from the database and displays them.  
-- **Add Products:**  
-  - The `/add_product` route handles the form submission and adds the product to the database.  
-- **Edit Products:**  
-  - The `/edit_product/<id>` route fetches a product’s data, allows modifications, and updates it in the database.  
-- **Delete Products:**  
-  - The `/delete_product/<id>` route removes the product from the database after admin confirmation.  
+  * Add, edit, delete, and view products with category and stock info
+  * Track total products and unique categories
+  * Products are linked to individual users
 
-### **3️⃣ Flash Messages & UI Updates**
-- Flash messages notify users about successful operations (e.g., "Product Added Successfully").  
-- Bootstrap modals & alerts enhance the UI/UX.  
+* 🌐 **Front-End Experience**
+
+  * Custom UI using **HTML5, CSS3**, and **Jinja2 templates**
+  * Responsive layout with modern cards, alerts, and section toggling
+  * Fully themed **dashboard UI with sidebar and stats**
+
+* 📮 **Contact & Messaging**
+
+  * Users can send messages via contact page
+  * Messages are shown as flash notifications (or can be stored in DB)
+
+* 📤 **Image Upload**
+
+  * Upload and store profile images in `/static/uploads`
+  * Secure file handling using Flask’s `request.files`
 
 ---
 
-## **📝 Summary**
-This project **combines Flask with Bootstrap** to create a fully functional **E-Commerce Inventory System**. The backend manages user authentication and product handling, while the frontend provides a smooth, user-friendly experience.  
+### 🛠️ Tech Stack:
 
-🔹 **Admin users** can manage products, ensuring proper inventory tracking.  
-🔹 **Regular users** can browse and interact with the system securely.  
+| Layer            | Tools Used                                      |
+| ---------------- | ----------------------------------------------- |
+| **Frontend**     | HTML, CSS, JavaScript, Jinja2                   |
+| **Backend**      | Python (Flask), Flask-WTF, Flask-Dance          |
+| **Database**     | MySQL (via flask-mysqldb)                       |
+| **Auth**         | Custom login system + Google OAuth2             |
+| **Security**     | bcrypt for password hashing, CSRF via Flask-WTF |
+| **Image Upload** | Secure file upload to static folder             |
 
 ---
+
+### 🌍 Accessibility & Hosting:
+
+This project is built for **local use** but can be shared over the internet using **Ngrok** — a simple tool to create a secure tunnel to your localhost.
+
+No cloud hosting or domain is required to share this project with others.
+
+---
+
+### 🔧 Ideal For:
+
+* Shop owners and home-based sellers needing to track products
+* Freelancers managing small-scale product inventories
+* Students learning **Flask + MySQL integration**
+* Anyone looking to deploy an inventory system *without* monthly charges
+
+---
+
+### 🔒 Coming Soon:
+
+* Facebook Login
+* Forgot Password with Email Reset
+* Product image gallery
+* Excel export for reports
+
+---
+
