@@ -22,8 +22,8 @@ mysql = MySQL(app)
 
 # ------------------ Google OAuth Setup ------------------
 google_bp = make_google_blueprint(
-    client_id="1085242979324-ht9vs72p7ap8jmrc4m1433md2kef39h7.apps.googleusercontent.com",
-    client_secret="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",
+    client_id="" #add your clien_id here for google seutup,
+    client_secret="" , #add your secret id here
     redirect_url="/login/google/authorized",
     scope=["profile", "email"]
 )
