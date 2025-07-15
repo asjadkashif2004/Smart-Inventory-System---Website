@@ -1,0 +1,45 @@
+{% extends 'app.html' %}
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(to right, #3a7bd5, #00d2ff);
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .track-container {
+        max-width: 600px;
+        margin: 60px auto;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .stat-box {
+        font-size: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 15px 0;
+    }
+</style>
+
+<div class="track-container">
+    <h2>📊 Inventory Stats</h2>
+    <div class="stat-box">
+        <strong>Total Products:</strong> {{ total_products }}
+    </div>
+    <div class="stat-box">
+        <strong>Total Categories:</strong> {{ total_categories }}
+    </div>
+</div>
+
+{% endblock %}

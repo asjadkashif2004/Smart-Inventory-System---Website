@@ -1,0 +1,94 @@
+{% extends 'app.html' %}
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(to right, #3dbb43, #2575fc);
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: bold;
+        text-shadow: 1px 1px 4px black;
+    }
+
+    label {
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .form-control {
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        margin-bottom: 20px;
+        font-size: 15px;
+    }
+
+    .btn-primary {
+        background-color: #fbbc04;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        cursor: pointer;
+        width: 100%;
+        transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #e0a800;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 20px;
+        background: #2575fc;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .back-btn:hover {
+        background: #1a5fdc;
+    }
+</style>
+
+<div class="container">
+    <h2>✏️ Edit Product</h2>
+    <form action="" method="POST">
+        <label for="name">Product Name</label>
+        <input type="text" class="form-control" name="name" value="{{ product[1] }}" required>
+
+        <label for="price">Price (Rs)</label>
+        <input type="number" class="form-control" name="price" value="{{ product[2] }}" required>
+
+        <label for="category">Category</label>
+        <input type="text" class="form-control" name="category" value="{{ product[3] }}" required>
+
+        <label for="stock">Stock</label>
+        <input type="number" class="form-control" name="stock" value="{{ product[4] }}" required>
+
+        <button type="submit" class="btn btn-primary">✅ Update Product</button>
+    </form>
+    <a href="/products" class="back-btn mt-3">⬅️ Back to Products</a>
+</div>
+
+{% endblock %}

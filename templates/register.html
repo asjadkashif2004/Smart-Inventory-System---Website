@@ -1,0 +1,272 @@
+{% extends 'app.html' %}
+{% block content %}
+
+<style>
+    body {
+        background: #f4f4f4;
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .register-container {
+        background: #ffffff;
+        padding: 40px 30px;
+        border-radius: 20px;
+        width: 360px;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
+        text-align: center;
+    }
+
+    .register-container h2 {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: #222;
+    }
+
+    .form-group {
+        text-align: left;
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        background-color: #f2f6ff;
+        font-size: 15px;
+        outline: none;
+    }
+
+    .form-control:focus {
+        border-color: #0d9488;
+        background: #eaf6ff;
+    }
+
+    .form-errors {
+        color: #d33;
+        font-size: 13px;
+        list-style: none;
+        margin-top: 5px;
+        padding-left: 0;
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        background-color: #059669;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 5px;
+        transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+        background-color: #047857;
+    }
+
+    .social-btn {
+        width: 100%;
+        padding: 12px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 15px;
+        margin-top: 15px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background 0.3s ease;
+    }
+
+    .facebook-btn {
+        background: #000;
+        color: #fff;
+    }
+
+    .facebook-btn:hover {
+        background: #222;
+    }
+
+    .google-btn {
+        background: #fff;
+        color: #333;
+        border: 1px solid #ccc;
+    }
+
+    .google-btn:hover {
+        background: #f3f3f3;
+    }
+
+    .facebook-btn img,
+    .google-btn img {
+        width: 20px;
+        margin-right: 10px;
+    }
+
+    .links {
+        margin-top: 12px;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .links a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #059669;
+    }
+
+    .links a:hover {
+        text-decoration: underline;
+    }
+
+    /* Modal */
+    #comingSoonModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    #comingSoonModal .modal-content {
+        background-color: white;
+        padding: 30px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+    }
+
+    #comingSoonModal .modal-content h3 {
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    #comingSoonModal .modal-content p {
+        font-size: 15px;
+        color: #555;
+    }
+
+    #comingSoonModal .modal-content button {
+        margin-top: 20px;
+        background-color: #059669;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #comingSoonModal .modal-content button:hover {
+        background-color: #047857;
+    }
+</style>
+
+<div class="register-container">
+    <h2>Create Account</h2>
+    <form method="POST" action="/register">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.name.label }}
+            {{ form.name(class="form-control", placeholder="Full Name") }}
+            {% if form.name.errors %}
+            <ul class="form-errors">{% for e in form.name.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.email.label }}
+            {{ form.email(class="form-control", placeholder="Email Address") }}
+            {% if form.email.errors %}
+            <ul class="form-errors">{% for e in form.email.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.password.label }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+            {% if form.password.errors %}
+            <ul class="form-errors">{% for e in form.password.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.confirm_password.label }}
+            {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
+            {% if form.confirm_password.errors %}
+            <ul class="form-errors">{% for e in form.confirm_password.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn-submit">Sign up</button>
+    </form>
+
+    <!-- Disabled social login buttons with modal -->
+    <div class="social-btn facebook-btn" onclick="showComingSoonModal()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+        Log in with Facebook
+    </div>
+
+    <div class="social-btn google-btn" onclick="showComingSoonModal()">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsI35NM2hR4g5qTOKRZaWem4FmoBAnLqVwQ&s"
+            alt="Google">
+        Log in with Google
+    </div>
+
+    <div class="links">
+        Already have an account? <a href="/login">Log in</a><br>
+        <a href="/">Return to homepage</a>
+    </div>
+</div>
+
+<!-- Modal for "Coming Soon" -->
+<div id="comingSoonModal">
+    <div class="modal-content">
+        <h3>🚧 Feature Coming Soon!</h3>
+        <p>
+            Social login with Google and Facebook is currently unavailable.<br><br>
+            👉 Please <a href="/register" style="color: #059669; font-weight: bold;">register here</a>
+            and then <a href="/login" style="color: #059669; font-weight: bold;">log in</a> using your email.
+        </p>
+        <button onclick="hideComingSoonModal()">Got it</button>
+    </div>
+</div>
+
+<script>
+    function showComingSoonModal() {
+        document.getElementById("comingSoonModal").style.display = "flex";
+    }
+
+    function hideComingSoonModal() {
+        document.getElementById("comingSoonModal").style.display = "none";
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'app.html' %}
+{% block content %}
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to right, #9386db, #1d1d1d);
+        color: #fff;
+    }
+
+    .contact-banner {
+        text-align: center;
+        padding: 40px 20px;
+        background: rgba(0, 0, 0, 0.3);
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        backdrop-filter: blur(6px);
+        text-shadow: 2px 2px 4px #000;
+    }
+
+    .contact-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+    }
+
+    .contact-info,
+    .contact-form {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .contact-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .contact-info h3 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .contact-info p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    .contact-form h3 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 14px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .contact-form textarea {
+        resize: none;
+        height: 130px;
+    }
+
+    .contact-form button {
+        background-color: #97dbe7;
+        color: black;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .contact-form button:hover {
+        background-color: #8cf0f3;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 30px;
+        background: #405c8b;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .back-link:hover {
+        background: #8cf0f3;
+    }
+
+    @media (max-width: 768px) {
+        .contact-wrapper {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<div class="contact-banner">
+    📞 Contact Us
+</div>
+
+<div class="contact-container">
+    <div class="contact-wrapper">
+
+        <!-- Contact Info Section -->
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p><strong>Email:</strong> asjadkashif2004@gmail.com</p>
+            <p><strong>Phone:</strong> +81-111-422-22</p>
+            <p><strong>Office:</strong> Quetta, Pakistan</p>
+            <p><strong>Hours:</strong> Mon–Fri | 9:00 AM – 5:00 PM</p>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h3>Send a Message</h3>
+            <form method="POST" action="/send_message">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <a href="/" class="back-link">⬅️ Back to Home</a>
+</div>
+
+{% endblock %}

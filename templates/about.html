@@ -1,0 +1,186 @@
+{% extends 'app.html' %}
+{% block content %}
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    body {
+        background: #f4f6f9;
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        color: #333;
+    }
+
+    .about-container {
+        padding: 60px 20px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .about-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .about-header h2 {
+        font-size: 40px;
+        font-weight: bold;
+        color: #222;
+    }
+
+    .about-header p {
+        font-size: 18px;
+        color: #555;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .comparison-table thead {
+        background: #222;
+        color: #fff;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 16px;
+        text-align: center;
+    }
+
+    .comparison-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .comparison-table i {
+        font-size: 18px;
+    }
+
+    .fa-check-circle {
+        color: green;
+    }
+
+    .fa-times-circle {
+        color: red;
+    }
+
+    .benefits-section {
+        margin-top: 60px;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .benefits-section h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .benefits-section ul {
+        padding-left: 20px;
+        font-size: 16px;
+        color: #444;
+    }
+
+    .btn-back {
+        display: block;
+        margin: 40px auto 0;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #ffcc00;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+
+    .btn-back:hover {
+        background-color: #e6b800;
+    }
+</style>
+
+<div class="about-container">
+    <div class="about-header">
+        <h2>About Smart Inventory System</h2>
+        <p>
+            Smart Inventory System is a modern, cloud-friendly, easy-to-use solution for small businesses and startups
+            that want to manage inventory without the hassle or high cost of traditional systems.
+        </p>
+    </div>
+
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Features</th>
+                <th>Smart Inventory System</th>
+                <th>Manual Excel</th>
+                <th>ERP Systems</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Real-Time Stock Tracking</td>
+                <td><i class="fas fa-check-circle"></i></td>
+                <td><i class="fas fa-times-circle"></i></td>
+                <td><i class="fas fa-check-circle"></i></td>
+            </tr>
+            <tr>
+                <td>Category-Based Management</td>
+                <td><i class="fas fa-check-circle"></i></td>
+                <td><i class="fas fa-times-circle"></i></td>
+                <td><i class="fas fa-check-circle"></i></td>
+            </tr>
+            <tr>
+                <td>Low Stock Alerts</td>
+                <td><i class="fas fa-check-circle"></i></td>
+                <td><i class="fas fa-times-circle"></i></td>
+                <td><i class="fas fa-check-circle"></i></td>
+            </tr>
+            <tr>
+                <td>Mobile Friendly</td>
+                <td><i class="fas fa-check-circle"></i></td>
+                <td><i class="fas fa-times-circle"></i></td>
+                <td><i class="fas fa-times-circle"></i></td>
+            </tr>
+            <tr>
+                <td>Cost Effective</td>
+                <td><i class="fas fa-check-circle"></i></td>
+                <td><i class="fas fa-check-circle"></i></td>
+                <td><i class="fas fa-times-circle"></i></td>
+            </tr>
+            <tr>
+                <td>No Installation Needed</td>
+                <td><i class="fas fa-check-circle"></i></td>
+                <td><i class="fas fa-check-circle"></i></td>
+                <td><i class="fas fa-times-circle"></i></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="benefits-section">
+        <h3>Why Choose SIS?</h3>
+        <ul>
+            <li>✅ Designed for small businesses and startups</li>
+            <li>✅ Simple and intuitive UI</li>
+            <li>✅ Instant record tracking and category filters</li>
+            <li>✅ Avoid Excel confusion and ERP costs</li>
+            <li>✅ Start managing inventory in just minutes</li>
+        </ul>
+    </div>
+
+    <a href="/" class="btn-back">← Back to Home</a>
+</div>
+
+{% endblock %}

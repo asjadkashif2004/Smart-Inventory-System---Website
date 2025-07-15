@@ -1,0 +1,198 @@
+{% extends 'app.html' %}
+{% block content %}
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        color: white;
+    }
+
+    .top-banner {
+        text-align: center;
+        padding: 20px 10px;
+        background: rgba(0, 0, 0, 0.4);
+        font-size: 32px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        backdrop-filter: blur(5px);
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 40px auto;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 30px;
+        border-radius: 15px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        color: white;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: bold;
+        text-shadow: 1px 1px 3px black;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    form input {
+        padding: 14px;
+        width: calc(50% - 10px);
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        outline: none;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    form input::placeholder {
+        color: #ccc;
+    }
+
+    form button {
+        width: 100%;
+        padding: 14px;
+        background: hsl(160, 82%, 45%);
+        border: none;
+        color: black;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    form button:hover {
+        background: #10b618;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        color: #333;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 25px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    table th,
+    table td {
+        padding: 14px 18px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    table thead {
+        background: #2575fc;
+        color: white;
+    }
+
+    table tbody tr:nth-child(even) {
+        background: #f0f7ff;
+    }
+
+    table tbody tr:hover {
+        background: #dcefff;
+        transition: background 0.3s;
+    }
+
+    .action-buttons a {
+        margin: 0 6px;
+        text-decoration: none;
+        font-weight: 600;
+        color: #2575fc;
+        transition: color 0.3s;
+    }
+
+    .action-buttons a:hover {
+        color: #0d47a1;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 15px;
+        background: #293785;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+        background: #000;
+    }
+
+    @media (max-width: 768px) {
+        form input {
+            width: 100%;
+        }
+
+        table th,
+        table td {
+            font-size: 14px;
+            padding: 10px;
+        }
+    }
+</style>
+
+<!-- Banner -->
+<div class="top-banner">📦 Product Management</div>
+
+<!-- Product Container -->
+<div class="container">
+    <h2>Add New Product</h2>
+    <form action="/add_product" method="POST">
+        <input type="text" name="name" placeholder="Product Name" required>
+        <input type="number" name="price" placeholder="Price" required>
+        <input type="text" name="category" placeholder="Category" required>
+        <input type="number" name="stock" placeholder="Stock" required>
+        <button type="submit">➕ Add Product</button>
+    </form>
+
+    <h2>Your Products</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price (Rs)</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product[1] }}</td>
+                <td>{{ product[2] }}</td>
+                <td>{{ product[3] }}</td>
+                <td>{{ product[4] }}</td>
+                <td class="action-buttons">
+                    <a href="/edit_product/{{ product[0] }}">✏️ Edit</a>
+                    <a href="/delete_product/{{ product[0] }}"
+                        onclick="return confirm('Are you sure you want to delete this product?')">🗑️ Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/dashboard" class="back-btn">⬅️ Back to Dashboard</a>
+</div>
+
+{% endblock %}
